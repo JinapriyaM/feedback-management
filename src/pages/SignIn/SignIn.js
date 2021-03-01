@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
 const Register = (props) => {
   const classes = useStyles();
 
+  const signInHandler = () => {
+    
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -71,7 +75,7 @@ const Register = (props) => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => props.history.replace('/upload')}
+            onClick={() => props.history.replace('/register')}
           >
             SignIn
           </Button>

@@ -235,7 +235,7 @@ const HeaderBar = (props) => {
               style={{color: "white", textDecoration: "none"}}
               // onClick={(e) => <Redirect to={{ pathname: "/home" }} />}
             >
-              Audio Converter
+              BoardMe
             </Typography>
           </Link>
 

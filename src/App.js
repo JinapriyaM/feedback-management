@@ -1,20 +1,23 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 
 import Register from "./pages/Register/Register";
-import SignIn from './pages/SignIn/SignIn';
-import Upload from './pages/Upload/Upload';
+import SignIn from "./pages/SignIn/SignIn";
+import Details from "./pages/Details/Details";
+import Home from "./pages/Home/Home";
 
-import AppBar from './components/AppBar/appBar';
+import AppBar from "./components/AppBar/appBar";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <AppBar />
+        <AppBar />
         <Switch>
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/signin' component={SignIn} />
-          <Route exact path='/upload' component={Upload} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/item" component={Details} />
         </Switch>
       </BrowserRouter>
     </div>
