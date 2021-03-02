@@ -162,8 +162,6 @@ const PropertyDetails = () => {
     }
   }, [location.state]);
 
-  console.log(location);
-
   const submitHandler = () => {
     axios
       .post("/comment/", {
