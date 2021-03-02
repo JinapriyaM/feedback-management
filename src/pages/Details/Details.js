@@ -56,28 +56,90 @@ const PropertyDetails = () => {
   const classes = useStyles();
   const location = useLocation();
   const [data, setData] = useState({
-    name: "The room house",
-    details: { rooms: 4, parking: true },
+    _id: {
+      $oid: "603b42dfbfcd3d4998d64a19",
+    },
+    pRatings: {
+      zero: 0,
+      one: 0,
+      two: 0,
+      three: 3,
+      four: 0,
+      five: 3,
+    },
+    oRatings: {
+      zero: 0,
+      one: 0,
+      two: 0,
+      three: 4,
+      four: 2,
+      five: 0,
+    },
+    rating: 3.8,
+    details: [],
+    name: "check updatessss",
+    price: 1500,
     comments: [
       {
-        user: "testPerson",
-        rate: 2,
-        text: "this is sample",
-        replies: [
-          { user: "replyUser", text: "one" },
-          { user: "replyUser2", text: "two" },
-        ],
+        pRating: 5,
+        oRating: 3,
+        _id: {
+          $oid: "603cc1364f5f9b3ce01a340c",
+        },
+        gId: "1",
+        gName: "guest",
+        email: "test@test.com",
+        tp: 771234567,
+        text: "this is test",
+        replies: [],
       },
       {
-        user: "testPerson2",
-        rate: 5,
-        text: "this is sample2",
-        replies: [
-          { user: "replyUser", text: "one" },
-          { user: "replyUser2", text: "two" },
-        ],
+        pRating: 3,
+        oRating: 4,
+        _id: {
+          $oid: "603cc1934f5f9b3ce01a340d",
+        },
+        gId: "222",
+        gName: "fdffd",
+        email: "0777123456",
+        tp: null,
+        text: "fdfdfdfdfdddf",
+        replies: [],
+      },
+      {
+        pRating: 3,
+        oRating: 4,
+        _id: {
+          $oid: "603cc2614f5f9b3ce01a340e",
+        },
+        gId: "222",
+        gName: "fdffd",
+        email: "0777123456",
+        tp: null,
+        text: "fdfdfdfdfdddf",
+        replies: [],
+      },
+      {
+        pRating: 3,
+        oRating: 3,
+        _id: {
+          $oid: "603cc26a4f5f9b3ce01a340f",
+        },
+        gId: "",
+        gName: "",
+        email: "",
+        tp: null,
+        text: "",
+        replies: [],
       },
     ],
+    createdAt: {
+      $date: "2021-02-28T07:14:39.175Z",
+    },
+    updatedAt: {
+      $date: "2021-03-01T10:31:06.865Z",
+    },
+    __v: 0,
   });
 
   const [guestId, setGuestId] = useState("");
@@ -96,7 +158,7 @@ const PropertyDetails = () => {
 
   const submitHandler = () => {
     axios
-      .post("http://localhost:8080/comment/", {
+      .post("http://localhost:4000/comment/", {
         pId: data._id,
         gId: guestId,
         gname: guestName,
@@ -208,7 +270,7 @@ const PropertyDetails = () => {
                     size="large"
                     value={oRating}
                     onChange={(event, newValue) => {
-                      console.log(newValue);   
+                      console.log(newValue);
                       setORating(newValue);
                     }}
                   />
