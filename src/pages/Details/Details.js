@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from "react";
+
 import { useLocation } from "react-router-dom";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import Paper from "@material-ui/core/Paper";
 import Comment from "../../components/Comment/Comment";
 import Details from "../../components/Details/Details";
 import Rating from "@material-ui/lab/Rating";
-import axios from "axios";
+import axios from '../../util/axios';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -151,14 +146,16 @@ const PropertyDetails = () => {
   const [commentText, setCommentText] = useState("");
 
   useEffect(() => {
-    setData(location.state);
-  }, []);
+    if(location.state){
+      setData(location.state);
+    }
+  }, [location.state]);
 
   console.log(location);
 
   const submitHandler = () => {
     axios
-      .post("http://localhost:4000/comment/", {
+      .post("/comment/", {
         pId: data._id,
         gId: guestId,
         gname: guestName,

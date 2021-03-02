@@ -1,11 +1,10 @@
 import React, {useEffect} from "react";
 
-import { Divider, Avatar, Grid, Paper, Button } from "@material-ui/core";
+import { Divider, Avatar, Grid, Button } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
 
 const Comment = (props) => {
   const {user, rate, replies, text} = props;

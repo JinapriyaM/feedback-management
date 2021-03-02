@@ -1,10 +1,8 @@
 import axios from 'axios';
-const Axios = () => {
-    return axios.create({
-        baseURL: "http://localhost:8080",
-        headers: {
-            "Content-type": "application/json"
-        }
-    })
-}
-export default Axios;
+
+export default axios.create({
+    baseURL: "http://localhost:4000",
+    headers: {
+        "Content-type": "application/json"
+    }
+})

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Divider, Avatar, Grid, Paper, Button } from "@material-ui/core";
+import { Grid, Paper, } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 
 const Details = (props) => {
