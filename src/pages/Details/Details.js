@@ -223,8 +223,9 @@ const PropertyDetails = () => {
           <Paper style={{ padding: "40px 20px", width: "1360px" }}>
             {data.comments.map((comment) => (
               <Comment
+                key={comment._id}
                 pId={data._id}
-                commentId={data._id}
+                commentId={comment._id}
                 user={comment.gName}
                 rate={comment.pRating}
                 replies={comment.replies}
@@ -291,12 +292,12 @@ const PropertyDetails = () => {
                 </Grid>
                 <Grid item xs={3}>
                   <Rating
-                    name="owner"
+                    name="simple-controlled"
                     size="large"
-                    value={oRating}
+                    value={pRating}
                     onChange={(event, newValue) => {
-                      console.log(newValue);
-                      setORating(newValue);
+                      console.log(event, newValue);
+                      setPRating(newValue);
                     }}
                   />
                 </Grid>
@@ -305,11 +306,12 @@ const PropertyDetails = () => {
                 </Grid>
                 <Grid item xs={3}>
                   <Rating
-                    name="owner"
+                    name="simple-controlledd"
                     size="large"
-                    value={pRating}
+                    value={oRating}
                     onChange={(event, newValue) => {
-                      setPRating(newValue);
+                      console.log(event, newValue);
+                      setORating(newValue);
                     }}
                   />
                 </Grid>
