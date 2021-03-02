@@ -39,6 +39,7 @@ const Home = () => {
   const classes = useStyles();
   const [propertyData, setPropertyData] = useState([
     {
+      _id: "603b42dfbfcd3d4998d64a19",
       name: "test",
       price: 1500,
       rating: 2

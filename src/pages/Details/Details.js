@@ -12,7 +12,9 @@ import Paper from "@material-ui/core/Paper";
 import Comment from "../../components/Comment/Comment";
 import Details from "../../components/Details/Details";
 import Rating from "@material-ui/lab/Rating";
-import axios from '../../util/axios';
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+import axios from "../../util/axios";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -136,7 +138,7 @@ const PropertyDetails = () => {
     },
     __v: 0,
   });
-
+  const [loding, setLoading] = useState(true);
   const [guestId, setGuestId] = useState("");
   const [guestName, setGuestName] = useState("");
   const [email, setEmail] = useState("");
@@ -146,8 +148,17 @@ const PropertyDetails = () => {
   const [commentText, setCommentText] = useState("");
 
   useEffect(() => {
-    if(location.state){
-      setData(location.state);
+    if (location.state) {
+      axios
+        .get(`/property/${location.state._id}`)
+        .then((response) => {
+          console.log(response);
+          setData(response.data.data);
+          setLoading(false);
+        })
+        .catch((err) => console.log(err));
+
+      // setLoading(false);
     }
   }, [location.state]);
 
@@ -174,13 +185,26 @@ const PropertyDetails = () => {
         setPRating(3);
         setORating(3);
         setCommentText("");
+        axios
+          .get(`/property/${location.state._id}`)
+          .then((response) => {
+            console.log(response);
+            setData(response.data.data);
+            setLoading(false);
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  return (
+  return loding ? (
+    <CircularProgress
+      size={100}
+      style={{ marginLeft: "48%", marginTop: "20%" }}
+    />
+  ) : (
     <div className={classes.root}>
       <Paper elevation={0} />
       <Grid container spacing={0} justify="flex-start">
@@ -201,6 +225,8 @@ const PropertyDetails = () => {
           <Paper style={{ padding: "40px 20px", width: "1360px" }}>
             {data.comments.map((comment) => (
               <Comment
+                pId={data._id}
+                commentId={data._id}
                 user={comment.gName}
                 rate={comment.pRating}
                 replies={comment.replies}
@@ -217,6 +243,7 @@ const PropertyDetails = () => {
                   id="gid"
                   label="Guest ID"
                   name="gid"
+                  value={guestId}
                   onChange={(e) => setGuestId(e.target.value)}
                 />
               </Grid>
@@ -229,6 +256,7 @@ const PropertyDetails = () => {
                   id="gname"
                   label="Guest Name"
                   name="gname"
+                  value={guestName}
                   onChange={(e) => setGuestName(e.target.value)}
                 />
               </Grid>
@@ -242,6 +270,7 @@ const PropertyDetails = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
@@ -254,6 +283,7 @@ const PropertyDetails = () => {
                   id="tp"
                   label="Telephone Number"
                   name="tp"
+                  value={tpNo}
                   onChange={(e) => setTpNo(e.target.value)}
                 />
               </Grid>
@@ -297,6 +327,7 @@ const PropertyDetails = () => {
                   id="comment"
                   label="Comments..."
                   name="comment"
+                  value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
                 />
               </Grid>
