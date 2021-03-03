@@ -232,115 +232,117 @@ const PropertyDetails = () => {
                 text={comment.text}
               />
             ))}
-            <Grid container spacing={2} justify="center">
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  size="small"
-                  id="gid"
-                  label="Guest ID"
-                  name="gid"
-                  value={guestId}
-                  onChange={(e) => setGuestId(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  size="small"
-                  id="gname"
-                  label="Guest Name"
-                  name="gname"
-                  value={guestName}
-                  onChange={(e) => setGuestName(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  size="small"
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  size="small"
-                  id="tp"
-                  label="Telephone Number"
-                  name="tp"
-                  value={tpNo}
-                  onChange={(e) => setTpNo(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12} container>
-                <Grid item xs={3}>
-                  <Typography>Property Rating:</Typography>
-                </Grid>
-                <Grid item xs={3}>
-                  <Rating
-                    name="simple-controlled"
-                    size="large"
-                    value={pRating}
-                    onChange={(event, newValue) => {
-                      console.log(event, newValue);
-                      setPRating(newValue);
-                    }}
+            <div style={{backgroundColor: "#EDF7F6", padding: "10px"}}>
+              <Grid container spacing={2} justify="center">
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    size="small"
+                    id="gid"
+                    label="Guest ID"
+                    name="gid"
+                    value={guestId}
+                    onChange={(e) => setGuestId(e.target.value)}
                   />
                 </Grid>
-                <Grid item xs={3}>
-                  <Typography>Owner Rating:</Typography>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    size="small"
+                    id="gname"
+                    label="Guest Name"
+                    name="gname"
+                    value={guestName}
+                    onChange={(e) => setGuestName(e.target.value)}
+                  />
                 </Grid>
-                <Grid item xs={3}>
-                  <Rating
-                    name="simple-controlledd"
-                    size="large"
-                    value={oRating}
-                    onChange={(event, newValue) => {
-                      console.log(event, newValue);
-                      setORating(newValue);
-                    }}
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    size="small"
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    size="small"
+                    id="tp"
+                    label="Telephone Number"
+                    name="tp"
+                    value={tpNo}
+                    onChange={(e) => setTpNo(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12} container>
+                  <Grid item xs={3}>
+                    <Typography>Property Rating:</Typography>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Rating
+                      name="simple-controlled"
+                      size="large"
+                      value={pRating}
+                      onChange={(event, newValue) => {
+                        console.log(event, newValue);
+                        setPRating(newValue);
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Typography>Owner Rating:</Typography>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Rating
+                      name="simple-controlledd"
+                      size="large"
+                      value={oRating}
+                      onChange={(event, newValue) => {
+                        console.log(event, newValue);
+                        setORating(newValue);
+                      }}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    multiline
+                    rows={3}
+                    size="small"
+                    id="comment"
+                    label="Comments..."
+                    name="comment"
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
                   />
                 </Grid>
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  multiline
-                  rows={3}
-                  size="small"
-                  id="comment"
-                  label="Comments..."
-                  name="comment"
-                  value={commentText}
-                  onChange={(e) => setCommentText(e.target.value)}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={() => submitHandler()}
-            >
-              Submit
-            </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={() => submitHandler()}
+              >
+                Submit
+              </Button>
+            </div>
           </Paper>
         </div>
         {/* <Grid>
