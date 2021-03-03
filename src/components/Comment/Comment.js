@@ -9,7 +9,8 @@ import TextField from "@material-ui/core/TextField";
 import axios from "../../util/axios";
 
 const Comment = (props) => {
-  const { user, rate, replies, text, pId, commentId } = props;
+  const { user, rate, replies, text, pId, commentId, dat } = props;
+  console.log("ids", pId, commentId);
   useEffect(() => {});
   // console.log(rate);
   return (
@@ -80,10 +81,18 @@ const Comment = (props) => {
                   onClick={() =>
                     axios
                       .delete("/comment/", {
-                        pId: pId,
-                        commentId: commentId,
+                        data: { pId: pId, commentId: commentId },
                       })
-                      .then((response) => console.log(response))
+                      .then((response) => {
+                        console.log(response);
+                        axios
+                          .get(`/property/${pId}`)
+                          .then((response) => {
+                            console.log(response);
+                            dat(prev => !prev);
+                          })
+                          .catch((err) => console.log(err));
+                      })
                       .catch((err) => console.log(err))
                   }
                 >

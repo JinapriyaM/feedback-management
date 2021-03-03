@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 const PropertyDetails = () => {
   const classes = useStyles();
   const location = useLocation();
+  const [load, setLoad] = useState(false);
   const [data, setData] = useState({
     _id: {
       $oid: "603b42dfbfcd3d4998d64a19",
@@ -160,7 +161,13 @@ const PropertyDetails = () => {
 
       // setLoading(false);
     }
-  }, [location.state]);
+  }, [location.state, load]);
+
+  // const AfterDeleteHandler = (data) => {
+  //   useEffect(() => {
+  //     setData(data);
+  //   }, [])
+  // }
 
   const submitHandler = () => {
     axios
@@ -230,6 +237,7 @@ const PropertyDetails = () => {
                 rate={comment.pRating}
                 replies={comment.replies}
                 text={comment.text}
+                dat={setLoad}
               />
             ))}
             <div style={{backgroundColor: "#EDF7F6", padding: "10px"}}>
