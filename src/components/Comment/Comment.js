@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Divider, Avatar, Grid, Button } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
@@ -10,9 +10,27 @@ import axios from "../../util/axios";
 
 const Comment = (props) => {
   const { user, rate, replies, text, pId, commentId, dat } = props;
-  console.log("ids", pId, commentId);
-  useEffect(() => {});
-  // console.log(rate);
+  const [replyData, setReplyData] = useState(replies);
+  const [reply, setReply] = useState('');
+  const [replyState, setReplyState] = useState(false);
+  
+  useEffect(() => {
+    if(replyState)
+      axios
+        .post('/comment/reply', {pId: pId, commentId: commentId, reply: {user: "test", text: reply}})
+        .then((response) => {
+          console.log(response);
+          setReplyData(prev => [...prev, {user: "test", text: reply}]);
+          setReplyState(false);
+        })
+        .catch((err) => console.log(err));
+
+      // setLoading(false);
+  }, [replyState]);
+
+  const replyHandler = () => {
+
+  }
   return (
     <>
       <Grid container wrap="nowrap" spacing={2} direction="column">
@@ -43,7 +61,7 @@ const Comment = (props) => {
                     This is reply
                   </p> */}
                 <ul>
-                  {replies.map((reply) => (
+                  {replyData.map((reply) => (
                     <li>
                       {reply.user}
                       <br></br>
@@ -64,12 +82,14 @@ const Comment = (props) => {
               placeholder="Reply..."
               multiline
               name="reply"
+              value={reply}
+              onChange={(e) => setReply(e.target.value)}
               style={{ marginBottom: 10 }}
             />
             <Grid justify="space-between" item container xs>
               <Grid item>
                 <Button
-                  // onClick={() => props.history.replace("/register")}
+                  onClick={() => setReplyState(true)}
                   color="primary"
                   variant="contained"
                 >
