@@ -62,7 +62,7 @@ const Comment = (props) => {
                   </p> */}
                 <ul>
                   {replyData.map((reply) => (
-                    <li>
+                    <li key={Math.random()}>
                       {reply.user}
                       <br></br>
                       {reply.text}
