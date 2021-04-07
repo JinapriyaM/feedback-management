@@ -26,11 +26,8 @@ const Comment = (props) => {
         .catch((err) => console.log(err));
 
       // setLoading(false);
-  }, [replyState]);
+  }, [replyState, commentId, pId, reply]);
 
-  const replyHandler = () => {
-
-  }
   return (
     <>
       <Grid container wrap="nowrap" spacing={2} direction="column">
